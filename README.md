@@ -1,0 +1,2 @@
+assetic-rewritesf-filter-bundle
+===============================

@@ -11,11 +11,14 @@ class RewritesfFilter implements FilterInterface
     {
         global $kernel;
         
-        $content = $this->filterReferences($asset->getContent(), function($matches) use ($kernel) {
+        $sourceBase = $asset->getSourceRoot();
+        
+        $content = $this->filterReferences($asset->getContent(), function($matches) use ($kernel,$sourceBase) {
             // obtains resource using bundle referenced order (app/Resources, bundle)
             $resource = $kernel->locateResource($matches[1],$kernel->getRootDir().'/Resources');
+            $relativeResource = ReferenceUtils::pathRelative2FilePath($sourceBase,$resource);
             
-            return str_replace($matches[1],$resource,$matches[0]);
+            return str_replace($matches[1],$relativeResource,$matches[0]);
         });
         
         $asset->setContent($content);

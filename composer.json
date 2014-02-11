@@ -1,0 +1,30 @@
+{
+    "name":        "javihernandezgil/assetic-rewritesf-filter-bundle",
+    "type":        "symfony-bundle",
+    "description": "JhgAsseticRewritesfFilterBundle provides assetic filter for helping bundle resources use.",
+    "keywords":    ["symfony", "bundle", "assetic","filter"],
+    "license":     "MIT License",
+
+    "authors": [
+        {
+            "name": "Javi Hernández Gil",
+            "homepage": "http://github.com/javihernandezgil"
+        }
+    ],
+
+    "require": {
+        "php":                      ">=5.3.2",
+        "symfony/framework-bundle": ">=2.3.0",
+        "symfony/assetic-bundle": 	"=>2.3.0"
+    },
+
+    "minimum-stability": "stable",
+
+    "autoload": {
+        "psr-0": {
+            "Jhg\\AsseticRewritesfFilterBundle": ""
+        }
+    },
+    
+    "target-dir": "Jhg/AsseticRewritesfFilterBundle"
+}

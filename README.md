@@ -13,7 +13,7 @@ Rewrites css/js bundle referenced resource urls.
     ],
     "require": {
 	...
-        "javihernandezgil/assetic-rewritesf-filter-bundle": "*",
+        "javihernandezgil/assetic-rewritesf-filter-bundle": "dev-master",
 	...
     },
 

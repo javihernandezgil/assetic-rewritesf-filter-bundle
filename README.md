@@ -5,12 +5,6 @@ Rewrites css/js bundle referenced resource urls.
 
 ## Use
 
-Include in *app/AppKernel.php* file:
-
-	...
-	new Jhg\AsseticRewritesfFilterBundle\JhgAsseticRewritesfFilterBundle,
-	...
-	
 Configure assetic in *app/config/config.yml*:
 
 	assetic:

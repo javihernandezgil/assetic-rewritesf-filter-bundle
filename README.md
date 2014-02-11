@@ -13,10 +13,9 @@ Configure assetic in *app/config/config.yml*:
 	        rewritesf: 
 	             resource: %kernel.root_dir%/../src/Jhg/AsseticRewritesfFilterBundle/Resources/config/rewritesf.xml
 	             apply_to: "\.(less|css|scss)$"
-	        cssrewrite: ~
 	        ...
 
-## Override of css/less/sass @imports example
+## Example: css/less/sass @imports override
 
 **config.yml**
     
@@ -29,7 +28,6 @@ Configure assetic in *app/config/config.yml*:
             rewritesf: 
                  resource: %kernel.root_dir%/../src/Jhg/AsseticRewritesfFilterBundle/Resources/config/rewritesf.xml
                  apply_to: "\.(scss)$"
-            #cssrewrite: ~
             sass:
                 bin: "%assetic_compass_bin%"
             compass:
@@ -59,13 +57,13 @@ Configure assetic in *app/config/config.yml*:
 
     $color: red;
 
-**app/Resoureces/ExampleBundle/assets/styles/variables.scss**
+**app/Resources/ExampleBundle/assets/styles/variables.scss**
 
     $color: green;
 
 **Result**
 
-If *app/Resoureces/ExampleBundle/assets/styles/variables.scss* file exists the result is 
+If *app/Resources/ExampleBundle/assets/styles/variables.scss* file exists the result is 
 
     body {
         background-color: green !important;

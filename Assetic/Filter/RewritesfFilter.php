@@ -9,6 +9,16 @@ class RewritesfFilter implements FilterInterface
 {
     public function filterLoad(AssetInterface $asset)
     {
+        global $kernel;
+        
+        $content = $this->filterReferences($asset->getContent(), function($matches) use ($kernel) {
+            // obtains resource using bundle referenced order (app/Resources, bundle)
+            $resource = $kernel->locateResource($matches[1],$kernel->getRootDir().'/Resources');
+            
+            return str_replace($matches[1],$resource,$matches[0]);
+        });
+        
+        $asset->setContent($content);
     }
     
     protected function filterReferences($content, $callback, $limit = -1, &$count = 0)
@@ -18,16 +28,6 @@ class RewritesfFilter implements FilterInterface
     
     public function filterDump(AssetInterface $asset)
     {
-        $content = $asset->getContent();
-		   
-        $content = $this->filterReferences($asset->getContent(), function($matches) {
-        	
-        	global $kernel;
-        	$resource = $kernel->locateResource($matches[1]);
-        	
-        	return str_replace($matches[1],$resource,$matches[0]);
-        });
         
-        $asset->setContent($content);
     }
 }

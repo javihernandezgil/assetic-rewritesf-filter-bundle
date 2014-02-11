@@ -3,7 +3,7 @@ namespace Jhg\AsseticRewritesfFilterBundle\Assetic\Util;
 
 abstract class ReferenceUtils
 {
-    const REGEX_BUNDLE_REFERENCE      = '/(@[a-z0-9]+Bundle(\/[a-z0-9\-\_\.]+)+)/i';
+    const REGEX_IMPORT_BUNDLE_REFERENCE    = '/@import [\'\"]?(@[a-z0-9]+Bundle(\/[a-z0-9\-\_\.]+)+)[\'\"]?;?/i';
     
     /**
      * Filters all bundle references s through a callable.
@@ -17,7 +17,7 @@ abstract class ReferenceUtils
      */
     public static function filterReferences($content, $callback, $limit = -1, &$count = 0)
     {
-        return preg_replace_callback(static::REGEX_BUNDLE_REFERENCE, $callback, $content, $limit, $count);
+        return preg_replace_callback(static::REGEX_IMPORT_BUNDLE_REFERENCE, $callback, $content, $limit, $count);
     }
 
     final private function __construct() { }

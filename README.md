@@ -3,6 +3,20 @@ Assetic RewriteSF Filter Bundle
 
 Rewrites css/js bundle referenced resource urls.
 
+## Install
+
+    "repositories": [
+        {
+            "url": "git@github.com:javihernandezgil/assetic-rewritesf-filter-bundle.git",
+            "type": "vcs"
+        }
+    ],
+    "require": {
+	...
+        "javihernandezgil/assetic-rewritesf-filter-bundle": "*",
+	...
+    },
+
 ## Use
 
 Configure assetic in *app/config/config.yml*:

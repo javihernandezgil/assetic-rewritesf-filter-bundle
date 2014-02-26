@@ -4,9 +4,10 @@ namespace Jhg\AsseticRewritesfFilterBundle\Assetic\Util;
 abstract class ReferenceUtils
 {
     const REGEX_IMPORT_BUNDLE_REFERENCE    = '/@import [\'\"]?(@[a-z0-9]+Bundle(\/[a-z0-9\-\_\.]+)+)[\'\"]?;?/i';
-    
+    const REGEX_URL_BUNDLE_REFERENCE    = '/url\([\'\"]?(@([a-z0-9]+Bundle)(\/[a-z0-9\-\_\.]+)+)[\'\"]?\)/i';
+
     /**
-     * Filters all bundle references s through a callable.
+     * Filters all import bundle references s through a callable.
      *
      * @param string   $content  The code
      * @param callable $callback A PHP callable
@@ -15,9 +16,24 @@ abstract class ReferenceUtils
      *
      * @return string The filtered CSS
      */
-    public static function filterReferences($content, $callback, $limit = -1, &$count = 0)
+    public static function filterImportReferences($content, $callback, $limit = -1, &$count = 0)
     {
         return preg_replace_callback(static::REGEX_IMPORT_BUNDLE_REFERENCE, $callback, $content, $limit, $count);
+    }
+
+    /**
+     * Filters all url bundle references s through a callable.
+     *
+     * @param string   $content  The code
+     * @param callable $callback A PHP callable
+     * @param integer  $limit    Limit the number of replacements
+     * @param integer  $count    Will be populated with the count
+     *
+     * @return string The filtered CSS
+     */
+    public static function filterUrlReferences($content, $callback, $limit = -1, &$count = 0)
+    {
+        return preg_replace_callback(static::REGEX_URL_BUNDLE_REFERENCE, $callback, $content, $limit, $count);
     }
 
     final private function __construct() { }

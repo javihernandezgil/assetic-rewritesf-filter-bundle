@@ -37,8 +37,19 @@ abstract class ReferenceUtils
     }
 
     final private function __construct() { }
-    
+
     public static function pathRelative2FilePath($frompath, $topath) {
+
+        if(DIRECTORY_SEPARATOR!='/') {
+            // replace windows bars with normal ones
+            $frompath = str_ireplace('\\','/',$frompath);
+            $topath = str_ireplace('\\','/',$topath);
+
+            // remove windows unit
+            $frompath = preg_replace('/^[A-Z]\:/','',$frompath);
+            $topath = preg_replace('/^[A-Z]\:/','',$topath);
+        }
+
         $from = explode( DIRECTORY_SEPARATOR, $frompath ); // Folders/File
         $to = explode( DIRECTORY_SEPARATOR, $topath ); // Folders/File
         $relpath = '';
@@ -50,6 +61,10 @@ abstract class ReferenceUtils
             $i++;
         }
         $j = count( $from ) - 1;
+
+        // windows path fix
+        if(DIRECTORY_SEPARATOR!='/') $j--;
+
         // Add '..' until the path is the same
         while ( $i <= $j ) {
             if ( !empty($from[$j]) ) $relpath .= '..'.DIRECTORY_SEPARATOR;

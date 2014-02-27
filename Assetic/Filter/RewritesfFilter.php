@@ -1,16 +1,16 @@
 <?php
 namespace Jhg\AsseticRewritesfFilterBundle\Assetic\Filter;
- 
+
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
 use Jhg\AsseticRewritesfFilterBundle\Assetic\Util\ReferenceUtils;
- 
+
 class RewritesfFilter implements FilterInterface
 {
     public function filterLoad(AssetInterface $asset)
     {
         global $kernel;
-        
+
         $sourceBase = $asset->getSourceRoot();
         $sourcePath = $asset->getSourcePath();
         $resourceAbsolutePath = pathinfo("$sourceBase/$sourcePath",PATHINFO_DIRNAME);
@@ -21,7 +21,7 @@ class RewritesfFilter implements FilterInterface
             // obtains resource using bundle referenced order (app/Resources, bundle)
             $resource = $kernel->locateResource($matches[1],$kernel->getRootDir().'/Resources');
             $relativeResource = ReferenceUtils::pathRelative2FilePath($resourceAbsolutePath,$resource);
-            
+
             return str_replace($matches[1],$relativeResource,$matches[0]);
         });
 
@@ -40,19 +40,19 @@ class RewritesfFilter implements FilterInterface
 
         $asset->setContent($content);
     }
-    
+
     protected function filterImportReferences($content, $callback, $limit = -1, &$count = 0)
     {
-    	return ReferenceUtils::filterImportReferences($content, $callback, $limit, $count);
+        return ReferenceUtils::filterImportReferences($content, $callback, $limit, $count);
     }
 
     protected function filterUrlReferences($content, $callback, $limit = -1, &$count = 0)
     {
-    	return ReferenceUtils::filterUrlReferences($content, $callback, $limit, $count);
+        return ReferenceUtils::filterUrlReferences($content, $callback, $limit, $count);
     }
 
     public function filterDump(AssetInterface $asset)
     {
-        
+
     }
 }

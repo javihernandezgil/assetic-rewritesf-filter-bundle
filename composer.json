@@ -1,5 +1,5 @@
 {
-    "name":        "javihernandezgil/assetic-rewritesf-filter-bundle",
+    "name":        "javihgil/assetic-rewritesf-filter-bundle",
     "type":        "symfony-bundle",
     "description": "JhgAsseticRewritesfFilterBundle provides assetic filter for helping bundle resources use.",
     "keywords":    ["symfony", "bundle", "assetic","filter"],
@@ -7,8 +7,8 @@
 
     "authors": [
         {
-            "name": "Javi Hernández Gil",
-            "homepage": "http://github.com/javihernandezgil"
+            "name": "Javi H. Gil",
+            "homepage": "http://github.com/javihgil"
         }
     ],
 

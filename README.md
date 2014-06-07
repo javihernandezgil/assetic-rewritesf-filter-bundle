@@ -7,13 +7,13 @@ Rewrites css/js bundle referenced resource urls.
 
     "repositories": [
         {
-            "url": "git@github.com:javihernandezgil/assetic-rewritesf-filter-bundle.git",
+            "url": "git@github.com:javihgil/assetic-rewritesf-filter-bundle.git",
             "type": "vcs"
         }
     ],
     "require": {
 	...
-        "javihernandezgil/assetic-rewritesf-filter-bundle": "dev-master",
+        "javihgil/assetic-rewritesf-filter-bundle": "dev-master",
 	...
     },
 
